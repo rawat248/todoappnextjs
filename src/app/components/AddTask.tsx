@@ -11,14 +11,20 @@ const AddTask = () => {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [taskValue, setTaskValue] = useState<string>('');
+  const [descriptionValue, setDescriptionValue] = useState<string>('');
+  const [statusValue, setStatusValue] = useState<string>('');
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await addTodo({
       id: uuidv4(),
       text: taskValue,
+      description: descriptionValue,
+      status: statusValue
     });
     setTaskValue("");
+    setDescriptionValue("");
+    setStatusValue("");
     setModalOpen(false);
     router.refresh();
   }
@@ -31,6 +37,10 @@ const AddTask = () => {
           <h3 className="font-bold text-lg">Add new task</h3>
           <div className="modal-action">
             <input type="text" placeholder="Type here" className="input input-bordered w-full" value={taskValue} onChange={e => setTaskValue(e.target.value)} />
+            <textarea placeholder="Description" className="input input-bordered w-full" value={descriptionValue} onChange={(e) => setDescriptionValue(e.target.value)}
+            />
+            <input type="text" placeholder="Status" className="input input-bordered w-full" value={statusValue} onChange={(e) => setStatusValue(e.target.value)}
+            />
             <button type="submit" className="btn">Submit</button>
           </div>
         </form>
@@ -39,4 +49,4 @@ const AddTask = () => {
   )
 }
 
-export default AddTask
+export default AddTask;

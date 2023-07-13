@@ -20,4 +20,4 @@ const Modal: React.FC<modalprops> = ({ modalOpen, setModalOpen, children }) => {
     )
 }
 
-export default Modal
+export default Modal;

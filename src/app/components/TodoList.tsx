@@ -13,13 +13,14 @@ const TodoList: React.FC<TodoListProps> = ({ task }) => {
                 <thead>
                     <tr>
                         <th>Tasks</th>
+                        <th>Description</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {task.map(tasks => (
                         <Task key={tasks.id} tasks={tasks} />
-
                     ))}
                 </tbody>
             </table>
