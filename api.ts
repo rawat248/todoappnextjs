@@ -1,15 +1,15 @@
 import { ITask } from './types/task';
 
-const baseUrl = ' http://localhost:3001';
+// const baseUrl = ' http://localhost:3001';
 
 export const getAllTodos = async (): Promise<ITask[]> => {
-    const res = await fetch(`${baseUrl}/tasks`, { cache: 'no-store' });
+    const res = await fetch(`http://localhost:3001/tasks`, { cache: 'no-store' });
     const todos = await res.json();
     return todos;
 }
 
 export const addTodo = async (todo: ITask): Promise<ITask> => {
-    const res = await fetch(`${baseUrl}/tasks`, {
+    const res = await fetch(`http://localhost:3001/tasks`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ export const addTodo = async (todo: ITask): Promise<ITask> => {
 }
 
 export const editTodo = async (todo: ITask): Promise<ITask> => {
-    const res = await fetch(`${baseUrl}/tasks/${todo.id}`, {
+    const res = await fetch(`http://localhost:3001/tasks/${todo.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ export const editTodo = async (todo: ITask): Promise<ITask> => {
 }
 
 export const deleteTodo = async (id: string): Promise<void> => {
-    await fetch(`${baseUrl}/tasks/${id}`, {
+    await fetch(`http://localhost:3001/tasks/${id}`, {
         method: 'DELETE',
     })
 }
